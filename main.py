@@ -31,12 +31,22 @@ class PlaceSearch:
 PlaceQuery = PlaceSearch('24.814168,121.771705', 5000)
 PlaceQuery.set_keyword('餐廳')
 
-response = requests.get(PlaceQuery.payload())
+# response = requests.get(PlaceQuery.payload())
+print(">>>>>>>>>>Debug>>>>>>>>>>")
+print(PlaceQuery.payload())
+print(">>>>>>>>>>>>>>>>>>>>>>>>>")
+# print(response.text)
 
-# print(response.json())
+f = open("data.json")
+# print(f.read())
+x = json.load(f)  # get json obj
 
+print(x['next_page_token'])
+print(len(x['results']))
+for index in range(0, len(x['results'])):
+    print(x['results'][index])
 
-
+# x['next_page_token'].test()
 # for num in range(1, 10):
 #     PlaceQuery.set_page_token(num)
 #     print(PlaceQuery.payload())
